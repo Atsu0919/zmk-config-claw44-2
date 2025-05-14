@@ -6,10 +6,6 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/rgb.h>
 
 #define LOWR 1
 #define RAIS 2
@@ -38,7 +34,6 @@
 //#define JP_EQL   LS(MINUS) // =
 //#define JP_PLUS  LS(SEMI)  // +
 //#define JP_YEN   INT1      // yen
-
 /* the following lines are for shortening keymap section */
 //#define MACRO_1_2 &macro_1_2 &kp &kp
 //#define A_DWN    &mt LALT DOWN
@@ -50,130 +45,121 @@
 //#define S_HENK   &mt RSHFT JP_HENK
 //#define A_UP     &mt RALT UP
 
-&lt {
-    quick-tap-ms = <200>;
-};
+&lt { quick-tap-ms = <200>; };
+
 &mt {
     quick-tap-ms = <200>;
     flavor = "tap-preferred";
 };
 
 / {
-//    macros {
-//        ZMK_MACRO(macro_1,
-//            wait-ms = <30>;
-//            tap-ms = <40>;
-//            bindings
-//                = <&kp LC(LA(DEL))>
-//                , <&macro_wait_time 1500>
-//                , <&kp DEL>
-//                , <&macro_wait_time 30>
-//                , <&kp A &kp B &kp C &kp ENTER>
-//                ;
-//        )
-//
-//        ZMK_MACRO(macro_2,
-//            wait-ms = <30>;
-//            tap-ms = <40>;
-//            bindings
-//                = <&kp N1 &kp N2 &kp N3>
-//                , <&macro_wait_time 300>
-//                , <&kp TAB>
-//                , <&macro_wait_time 30>
-//                , <&kp A &kp B &kp C>
-//                , <&macro_wait_time 300>
-//                , <&kp TAB>
-//                , <&macro_wait_time 30>
-//                , <&kp ENTER>
-//                ;
-//        )
-//
-//        ZMK_MACRO(macro_3,
-//            wait-ms = <300>;
-//            tap-ms = <40>;
-//            bindings
-//                = <&kp LS(TAB)>
-//                , <&macro_wait_time 1000>
-//                , <&kp HOME>
-//                , <&macro_wait_time 300>
-//                , <&kp TAB &kp END>    
-//                ;
-//        )
-//    };
-//
-//    behaviors {
-//        macro_1_2: macro_1_2 {
-//            compatible = "zmk,behavior-hold-tap";
-//            bindings = <&macro_2>, <&macro_1>;
-//            #binding-cells = <2>;
-//            tapping-term-ms = <300>;
-//        };
-//    };
+    //    macros {
+    //        ZMK_MACRO(macro_1,
+    //            wait-ms = <30>;
+    //            tap-ms = <40>;
+    //            bindings
+    //                = <&kp LC(LA(DEL))>
+    //                , <&macro_wait_time 1500>
+    //                , <&kp DEL>
+    //                , <&macro_wait_time 30>
+    //                , <&kp A &kp B &kp C &kp ENTER>
+    //                ;
+    //        )
+    //
+    //        ZMK_MACRO(macro_2,
+    //            wait-ms = <30>;
+    //            tap-ms = <40>;
+    //            bindings
+    //                = <&kp N1 &kp N2 &kp N3>
+    //                , <&macro_wait_time 300>
+    //                , <&kp TAB>
+    //                , <&macro_wait_time 30>
+    //                , <&kp A &kp B &kp C>
+    //                , <&macro_wait_time 300>
+    //                , <&kp TAB>
+    //                , <&macro_wait_time 30>
+    //                , <&kp ENTER>
+    //                ;
+    //        )
+    //
+    //        ZMK_MACRO(macro_3,
+    //            wait-ms = <300>;
+    //            tap-ms = <40>;
+    //            bindings
+    //                = <&kp LS(TAB)>
+    //                , <&macro_wait_time 1000>
+    //                , <&kp HOME>
+    //                , <&macro_wait_time 300>
+    //                , <&kp TAB &kp END>    
+    //                ;
+    //        )
+    //    };
+    //
+    //    behaviors {
+    //        macro_1_2: macro_1_2 {
+    //            compatible = "zmk,behavior-hold-tap";
+    //            bindings = <&macro_2>, <&macro_1>;
+    //            #binding-cells = <2>;
+    //            tapping-term-ms = <300>;
+    //        };
+    //    };
 
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-/* -------------------------------------------------------------   -------------------------------------------------------------
+            /* -------------------------------------------------------------   -------------------------------------------------------------
    |   ESC   |    Q    |    W    |    E    |    R    |    T    |   |    Y    |    U    |    I    |    O    |    P    |   -  _  |
    |   TAB   |    A    |    S    |    D    |    F    |    G    |   |    H    |    J    |    K    |    L    |   ;  :  |   '  "  |
    |LEFT  GUI|    Z    |    X    |    C    |    V    |    B    |   |    N    |    M    |   ,  <  |   .  >  |   /  ?  |  RIGHT  |
    --------------------|DOWN ALT |MUHEN SFT|SPC lower|BSPC CTL |   | DEL CTL |ENT raise|HENK SFT |  UP SFT |--------------------
                        -----------------------------------------   -----------------------------------------
 */
+
             bindings = <
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-                       &none  &none  &trans  &trans      &trans     &trans     &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &trans  &trans  &trans  &trans  &none  &none
             >;
         };
 
         lower {
-/* -------------------------------------------------------------   -------------------------------------------------------------
+            /* -------------------------------------------------------------   -------------------------------------------------------------
    |MACRO_1_2|         |         |    F8   |  Ctrl+Y |         |   | MACRO_3 |         |         |         |  PSCRN  |   INS   |
    |   CAPS  |    !    |    @    |    #    |    $    |    %    |   |   LEFT  |   DOWN  |    UP   |  RIGHT  |    {    |    }    |
    |         |    ^    |    &    |    (    |    )    |    ~    |   |   HOME  |  PG_DN  |  PG_UP  |   END   |    |    |   APP   |
    --------------------|  ENTER  |   DEL   |         |BSPC CTL |   | DEL CTL |  adjust |HENK SFT |  UP SFT |--------------------
                         -----------------------------------------   -----------------------------------------
 */
+
             bindings = <
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-                       &none  &none  &trans  &trans      &trans     &trans     &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &trans  &trans  &trans  &trans  &none  &none
             >;
         };
 
         raise {
-/* -------------------------------------------------------------   -------------------------------------------------------------
+            /* -------------------------------------------------------------   -------------------------------------------------------------
    |    F1   |    F2   |    F3   |    F4   |    F5   |    F6   |   |    `    |    =    |    +    |  ASTER  |    /    |    -    |
    |         |    1    |    2    |    3    |    4    |    5    |   |    6    |    7    |    8    |    9    |    0    |    \    |
    |  F7 GUI |    F8   |    F9   |   F10   |   F11   |   F12   |   |    [    |    ]    |    ,    |    .    |         |         |
    --------------------|         |         |  adjust |BSPC CTL |   | DEL CTL |         |         |         |--------------------
                        -----------------------------------------   -----------------------------------------
 */
+
             bindings = <
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-                       &none  &none  &trans  &trans      &trans     &trans     &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &kp S  &kp T  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &kp U  &kp V  &none  &none  &none  &none  &trans  &trans  &trans  &trans  &none  &none
             >;
         };
 
         adjust {
-/* -------------------------------------------------------------   -------------------------------------------------------------
+            /* -------------------------------------------------------------   -------------------------------------------------------------
    |         |         |         |         |         |         |   |         |    7    |    8    |    9    |         |         |
    |  BT_CLR |         |         |         |         |         |   |         |    4    |    5    |    6    |         |         |
    |  BT_NXT |         |         |         |         |         |   |    0    |    1    |    2    |    3    |         |         |
    --------------------|         |         |         |BSPC CTL |   | DEL CTL |    ,    |    .    |         |--------------------
                        -----------------------------------------   -----------------------------------------
 */
+
             bindings = <
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-    &none  &none  &none  &none  &none   &none       &none      &none  &none  &none  &none  &none
-                       &none  &none  &trans  &trans      &trans     &trans     &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &trans  &trans  &trans  &trans  &none  &none
             >;
         };
     };
