@@ -58,7 +58,7 @@
     flavor = "tap-preferred";
 };
 
-/// {
+/ {
 //    macros {
 //        ZMK_MACRO(macro_1,
 //            wait-ms = <30>;
